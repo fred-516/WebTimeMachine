@@ -10,9 +10,9 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
   const [websiteInput, setWebsiteInput] = useState("");
 
-  const dateArray = date.toISOString().split("T"); // split the ISO format to seperate date and time in an array
+  const dateArray = date.toISOString().split("T"); 
 
-  // Set the date picker //
+  
 
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate;
@@ -33,20 +33,20 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
     showMode("time");
   };
 
-  // handling the user's input //
+ 
 
   const handleWebsiteInput = (e) => {
     setWebsiteInput(e);
   };
 
-  // fetching the wayback API to get the website url with the user's choices
+ 
 
   const getWebsite = async () => {
     console.log(websiteInput);
     const timestamp =
       dateArray[0].split("-").join("") +
       "" +
-      dateArray[1].substring(0, 5).replace(":", ""); // define timestamp to be understable by the APi with the YYYYMMYYHHMM format
+      dateArray[1].substring(0, 5).replace(":", ""); 
 
     return fetch(
       `http://archive.org/wayback/available?url=${websiteInput}&timestamp=${timestamp}`
